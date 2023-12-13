@@ -21,10 +21,10 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests with coverage
       run: |
-        pytest --cov=src tests/
+        pytest --cov=src --cov-report=xml tests/
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v2
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        directory: ./coverage/reports/
+        token: ${{ secrets.CODECOV_TOKEN }}  
+        file: ./coverage.xml  
         fail_ci_if_error: true
